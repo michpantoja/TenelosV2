@@ -8,8 +8,10 @@ const ss3 = Source_Sans_3({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Ten ELOs | Live Tennis Elo Ratings on Hard, Clay, and Grass",
-  description: "Stay updated with real-time tennis ELO ratings for your favorite players. Find in-depth player statistics, rankings, and historical data on this live tennis Elo ratings website.",
-  keywords: "tennis Elo ratings, live tennis rankings, tennis player statistics, tennis Elo system, tennis ratings history, player rankings, live tennis data, Elo ratings website, tennis analytics, tennis ratings database"
+  description:
+    "Stay updated with real-time tennis ELO ratings for your favorite players. Find in-depth player statistics, rankings, and historical data on this live tennis Elo ratings website.",
+  keywords:
+    "tennis Elo ratings, live tennis rankings, tennis player statistics, tennis Elo system, tennis ratings history, player rankings, live tennis data, Elo ratings website, tennis analytics, tennis ratings database",
 };
 
 export default function RootLayout({

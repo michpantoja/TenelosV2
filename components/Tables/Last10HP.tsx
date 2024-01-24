@@ -93,7 +93,7 @@ export default function Last10HP() {
   return (
     <div className="flex flex-col border border-gray rounded-lg">
       <div className="flex flex-col px-4 pt-5 gap-2.5">
-        <p className="font-semibold text-lg text-darkerGray">
+        <p className="font-semibold text-lg text-darkerGray select-none">
           Last 10 Hot Performances
         </p>
         <div className="flex gap-2.5 pt-3">
@@ -112,7 +112,7 @@ export default function Last10HP() {
           ))}
         </div>
       </div>
-      <table className="w-full min-w-max table-auto text-left">
+      <table className="w-full min-w-min table-auto text-left">
         <thead>
           <tr className="border-b border-b-gray">
             {tableHead.map((head, index) => (
@@ -125,51 +125,40 @@ export default function Last10HP() {
           </tr>
         </thead>
         <tbody>
-          {tableRows?.map(
-            (
-              {
-                rank,
-                countryCode,
-                name,
-                last10
-              },
-              index
-            ) => {
-            
+          {tableRows?.map(({ rank, countryCode, name, last10 }, index) => {
             const isEven = index % 2 === 0;
             const classes = isEven ? "p-4 bg-lightGray" : "p-4";
 
-              return (
-                <tr key={name}>
-                  <td className={classes}>
-                    <p className="font-medium text-sm select-none text-darkerGray">
-                      {rank}
+            return (
+              <tr key={name}>
+                <td className={classes}>
+                  <p className="font-medium text-sm select-none text-darkerGray">
+                    {rank}
+                  </p>
+                </td>
+                <td className={classes}>
+                  <div className="flex items-center gap-2">
+                    <ReactCountryFlag
+                      countryCode={countryCode}
+                      style={{
+                        // filter: "drop-shadow(0 0 0.12rem black)",
+                        userSelect: "none",
+                      }}
+                      svg
+                    />
+                    <p className="font-medium text-sm select-none text-darkerGray hover:text-green cursor-pointer">
+                      {name}
                     </p>
-                  </td>
-                  <td className={classes}>
-                    <div className="flex items-center gap-2">
-                      <ReactCountryFlag
-                        countryCode={countryCode}
-                        style={{
-                          // filter: "drop-shadow(0 0 0.12rem black)",
-                          userSelect: "none",
-                        }}
-                        svg
-                      />
-                      <p className="font-medium text-sm select-none text-darkerGray hover:text-green cursor-pointer">
-                        {name}
-                      </p>
-                    </div>
-                  </td>
-                  <td className={classes}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
-                      {last10}
-                    </p>
-                  </td>
-                </tr>
-              );
-            }
-          )}
+                  </div>
+                </td>
+                <td className={classes}>
+                  <p className="font-semibold text-sm select-none text-darkerGray">
+                    {last10}
+                  </p>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

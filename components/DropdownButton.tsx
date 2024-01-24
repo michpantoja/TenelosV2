@@ -14,7 +14,7 @@ export default function DropdownButton({
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <div className="relative">
+    <div className="w-fit relative">
       <Select
         className="font-semibold text-base select-none rounded-lg outline-none"
         defaultValue={options[0]}
