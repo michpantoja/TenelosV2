@@ -50,23 +50,23 @@ export default function LiveRatingsTable() {
   const tableRows = [
     {
       rank: "1",
-      rankChanges: "",
+      rankChanges: "2",
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingChanges: "1",
       peak: "3092",
       age: "36",
     },
     {
-      rank: "1",
-      rankChanges: "",
+      rank: "2",
+      rankChanges: "3",
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingChanges: "3",
       peak: "3092",
       age: "36",
     },
@@ -366,7 +366,7 @@ export default function LiveRatingsTable() {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col sticky top-0 z-20 pb-2.5 bg-[#FFFFFF] gap-2.5">
+      <div className="flex flex-col sticky top-16 z-20 pb-2.5 bg-[#FFFFFF] gap-2.5">
         <div className="flex gap-2.5 pt-3">
           {recordType.map((item) => (
             <div
@@ -382,7 +382,7 @@ export default function LiveRatingsTable() {
             </div>
           ))}
         </div>
-        <div className="flex gap-2.5">
+        <div className="w-full flex flex-wrap gap-1 sm:gap-2.5">
           <DropdownButton
             options={[
               { value: "2024", label: "2024" },
@@ -414,16 +414,16 @@ export default function LiveRatingsTable() {
           />
         </div>
       </div>
-      <table className="mt-2.5 w-full min-w-max table-auto text-left bg-[#FFFFFF]">
+      <table className="mt-2.5 w-full min-w-min table-auto text-left bg-[#FFFFFF]">
         <thead>
-          <tr className="sticky top-24 z-10 border-b-2 border-b-gray" >
+          <tr className="sticky top-[203.2px] sm:top-[160px] z-10 border-b-2 border-b-gray" >
             {tableHead.map((head, index) => (
               <th
                 key={index}
-                className="cursor-pointer bg-[#FFFFFF] p-2 select-none"
+                className="cursor-pointer bg-[#FFFFFF] px-0.5 py-2 xs:p-2 select-none"
                 onClick={() => setIsFiltered(!isFiltered)}
               >
-                <div className="w-full flex justify-between items-center gap-1 text-xs text-darkGray cursor-pointer select-none">
+                <div className="w-full flex justify-between items-center gap-0.5 xs:gap-1 text-xs text-darkGray cursor-pointer select-none">
                   {head}
                   <IoChevronDownOutline
                     color="green"
@@ -455,10 +455,10 @@ export default function LiveRatingsTable() {
               },
               index
             ) => {
-              const isLast = index === tableRows.length - 1;
+              const isLast = index === tableRows.length - 0;
               const classes = isLast
-                ? "px-2 py-4"
-                : "px-2 py-4 border-b-2 border-lightGray";
+                ? "px-0.5 xs:px-2 py-2 xs:py-4"
+                : "px-0.5 xs:px-2 py-2 xs:py-4 border-b-2 border-lightGray";
 
               return (
                 <tr key={name}>
@@ -478,7 +478,7 @@ export default function LiveRatingsTable() {
                     </p>
                   </td>
                   <td className={classes}>
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-1 sm:gap-2">
                       <ReactCountryFlag
                         countryCode={countryCode}
                         style={{
@@ -493,12 +493,12 @@ export default function LiveRatingsTable() {
                     </div>
                   </td>
                   <td className={classes}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
+                    <p className="font-semibold text-sm select-none text-darkerGray max-sm:text-center">
                       {rating}
                     </p>
                   </td>
                   <td className={classes}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
+                    <p className="font-semibold text-sm select-none text-darkerGray ">
                       {ratingChanges}
                     </p>
                   </td>
@@ -508,7 +508,7 @@ export default function LiveRatingsTable() {
                     </p>
                   </td>
                   <td className={classes}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
+                    <p className="font-semibold text-sm select-none text-darkerGray max-sm:text-right">
                       {age}
                     </p>
                   </td>
