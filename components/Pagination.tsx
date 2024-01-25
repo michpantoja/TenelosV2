@@ -28,7 +28,7 @@ export default function Pagination({
       pages.push(
         <li
           key={i}
-          className={`font-semibold text-xs rounded-lg p-2 cursor-pointer ${
+          className={`font-semibold text-xs rounded-lg p-2 select-none cursor-pointer ${
             currentPage === i ? "bg-green text-[#FFFFFF]" : "text-darkerGray"
           }`}
           onClick={() => handleClick(i)}
@@ -44,7 +44,7 @@ export default function Pagination({
     <div className="flex justify-between mt-2.5">
       <ul className="flex gap-4">
         <li
-          className={`font-semibold text-xs rounded-lg p-2 ${
+          className={`font-semibold text-xs rounded-lg p-2 select-none ${
             currentPage > 1
               ? "cursor-pointer text-darkerGray"
               : "cursor-not-allowed text-gray"
@@ -58,7 +58,7 @@ export default function Pagination({
         {renderPageNumbers()}
 
         <li
-          className={`font-semibold text-xs rounded-lg p-2 ${
+          className={`font-semibold text-xs rounded-lg p-2 select-none ${
             currentPage < totalPages
               ? "cursor-pointer text-darkerGray"
               : "cursor-not-allowed text-gray"
@@ -71,7 +71,7 @@ export default function Pagination({
           <LuMoveRight size={12} className="inline-flex ml-2" />
         </li>
       </ul>
-      <p className="font-medium text-sm text-darkerGray">
+      <p className="font-medium text-sm text-darkerGray select-none">
         Showing {Math.min(dataPerPage * currentPage, totalData)} out of {" "}
         {totalData} results.
       </p>

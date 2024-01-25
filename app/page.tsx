@@ -1,6 +1,6 @@
 import Banner from "@/components/Banner";
 import Blog from "@/components/Blog";
-import Last10HP from "@/components/Tables/Last10HP";
+import Last10HPTable from "@/components/Tables/Last10HP";
 import LiveRatingsTable from "@/components/Tables/LiveRatings";
 
 export default function LiveRatings() {
@@ -13,7 +13,7 @@ export default function LiveRatings() {
         <LiveRatingsTable />
         </div>
         <div className="w-1/4 hidden lg:flex flex-col gap-4">
-          <Last10HP />
+          <Last10HPTable />
           <Blog />
         </div>
       </div>
