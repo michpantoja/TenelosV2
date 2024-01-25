@@ -16,7 +16,7 @@ export default function DropdownButton({
   return (
     <div className="w-fit relative">
       <Select
-        className="font-semibold text-base select-none rounded-lg outline-none"
+        className="font-semibold text-base select-none outline-none"
         defaultValue={options[0]}
         isSearchable={false}
         options={options}

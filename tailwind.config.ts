@@ -14,6 +14,9 @@ const config: Config = {
       gray: "#878787",
       lightGray: "#F5F6F6",
       lightestGray: "#FBFBFB",
+      hard: "#006980",
+      clay: "#FF9B66",
+      grass: "#028360"
     },
   },
 

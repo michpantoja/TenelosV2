@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 
-export default function Last10HP() {
+export default function Last10HPTable() {
   const [toggleRecords, seToggleRecords] = useState(1);
 
   const recordType = [

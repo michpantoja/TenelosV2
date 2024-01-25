@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 
-export default function Top15AT() {
+export default function Top15ATPTable() {
   const [toggleRecords, seToggleRecords] = useState(1);
 
   const recordType = [
