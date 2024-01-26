@@ -3,6 +3,7 @@ import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Topbar from "@/components/Navbars/Topbar";
+import Banner from "@/components/Banner";
 
 const ss3 = Source_Sans_3({ subsets: ["latin"] });
 
@@ -23,7 +24,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={ss3.className}>
         <Topbar />
-        {children}
+        <main className="w-full px-6 xl:px-32 pb-4 xl:pb-8 gap-6 flex flex-col">
+          <Banner />
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

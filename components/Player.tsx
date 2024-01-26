@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import Select from "react-select";
@@ -32,14 +32,14 @@ export default function Player({ head }: { head: number }) {
     },
   ];
 
-    // State to hold the selected player
-    const [selectedPlayer, setSelectedPlayer] = useState(players[0]);
+  // State to hold the selected player
+  const [selectedPlayer, setSelectedPlayer] = useState(players[0]);
 
-    // Function to handle change in selection
-    const handleChange = (player: any) => {
-      setSelectedPlayer(player || players[0]);
-    };
-    
+  // Function to handle change in selection
+  const handleChange = (player: any) => {
+    setSelectedPlayer(player || players[0]);
+  };
+
   return (
     <div className="flex flex-col items-center gap-4">
       <Image
@@ -102,32 +102,60 @@ export default function Player({ head }: { head: number }) {
       />
       <div className="w-[280px] flex flex-col gap-3 px-4 py-5 border border-gray rounded-lg">
         <div className="flex justify-between">
-          <p className="font-regular text-base text-darkerGray">Rank:</p>
-          <p className="font-semibold text-base text-darkerGray">{selectedPlayer.rank}</p>
+          <p className="font-regular text-base text-darkerGray select-none">
+            Rank:
+          </p>
+          <p className="font-semibold text-base text-darkerGray select-none">
+            {selectedPlayer.rank}
+          </p>
         </div>
         <div className="flex justify-between">
-          <p className="font-regular text-base text-darkerGray">Age:</p>
-          <p className="font-semibold text-base text-darkerGray">{selectedPlayer.age}</p>
+          <p className="font-regular text-base text-darkerGray select-none">
+            Age:
+          </p>
+          <p className="font-semibold text-base text-darkerGray select-none">
+            {selectedPlayer.age}
+          </p>
         </div>
         <div className="flex justify-between">
-          <p className="font-regular text-base text-darkerGray">Country:</p>
-          <p className="font-semibold text-base text-darkerGray">{selectedPlayer.country}</p>
+          <p className="font-regular text-base text-darkerGray select-none">
+            Country:
+          </p>
+          <p className="font-semibold text-base text-darkerGray select-none">
+            {selectedPlayer.country}
+          </p>
         </div>
         <div className="flex justify-between">
-          <p className="font-regular text-base text-darkerGray">Weight:</p>
-          <p className="font-semibold text-base text-darkerGray">{selectedPlayer.weight}</p>
+          <p className="font-regular text-base text-darkerGray select-none">
+            Weight:
+          </p>
+          <p className="font-semibold text-base text-darkerGray select-none">
+            {selectedPlayer.weight}
+          </p>
         </div>
         <div className="flex justify-between">
-          <p className="font-regular text-base text-darkerGray">Height:</p>
-          <p className="font-semibold text-base text-darkerGray">{selectedPlayer.height}</p>
+          <p className="font-regular text-base text-darkerGray select-none">
+            Height:
+          </p>
+          <p className="font-semibold text-base text-darkerGray select-none">
+            {selectedPlayer.height}
+          </p>
         </div>
         <div className="flex justify-between">
-          <p className="font-regular text-base text-darkerGray">Last Active:</p>
-          <p className="font-semibold text-base text-darkerGray">{selectedPlayer.lastActive}</p>
+          <p className="font-regular text-base text-darkerGray select-none">
+            Last Active:
+          </p>
+          <p className="font-semibold text-base text-darkerGray select-none">
+            {selectedPlayer.lastActive}
+          </p>
         </div>
         <div className="flex justify-between">
-          <p className="font-regular text-base text-darkerGray">Status:</p>
-          <p className="font-semibold text-base text-darkerGray">{selectedPlayer.status}</p>
+          <p className="font-regular text-base text-darkerGray select-none">
+            Status:
+          </p>
+          <p className="font-semibold text-base text-darkerGray select-none">
+            {selectedPlayer.status}
+          </p>
         </div>
       </div>
     </div>
