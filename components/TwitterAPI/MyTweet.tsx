@@ -1,3 +1,5 @@
+"use client"
+
 import type { Tweet } from 'react-tweet/api'
 import {
   type TwitterComponents,

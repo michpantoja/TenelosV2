@@ -1,3 +1,5 @@
+"use client"
+
 import { Suspense } from 'react'
 import { getTweet } from 'react-tweet/api'
 import { type TweetProps, TweetNotFound, TweetSkeleton } from 'react-tweet'

@@ -41,7 +41,7 @@ export default function Pagination({
   };
 
   return (
-    <div className="flex justify-between mt-2.5">
+    <div className="flex flex-wrap max-sm:gap-2 justify-between mt-2.5">
       <ul className="flex gap-4">
         <li
           className={`font-semibold text-xs rounded-lg p-2 select-none ${
