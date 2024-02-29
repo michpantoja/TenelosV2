@@ -40,7 +40,7 @@ export default function Accordion({
         style={{ maxHeight: contentHeight }}
         className="overflow-hidden duration-300 ease-in-out bg-gray/30 rounded-b-lg px-4 sm:px-7"
       >
-        <div className="p-4 font-regular  text-darkerGray">{children}</div>
+        <div className="p-4 pt-0 font-regular text-darkerGray">{children}</div>
       </div>
     </div>
   );

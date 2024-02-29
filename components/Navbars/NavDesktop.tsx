@@ -66,7 +66,7 @@ export default function NavDesktop() {
   ) => {
     return (
       <components.Control {...props}>
-        <IoSearch  color="#444444" />
+        <IoSearch color="#444444" />
         {props.children}
       </components.Control>
     );
