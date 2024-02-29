@@ -41,7 +41,7 @@ export default function NavMobile() {
   ) => {
     return (
       <components.Control {...props}>
-        <IoSearch  color="#444444" />
+        <IoSearch color="#444444" />
         {props.children}
       </components.Control>
     );
@@ -67,58 +67,61 @@ export default function NavMobile() {
               className={`text-base font-semibold cursor-pointer select-none ${
                 activeId === item.id ? "text-green" : "text-darkerGray"
               }`}
-              onClick={() => {setActiveId(item.id); setToggle(false)}}
+              onClick={() => {
+                setActiveId(item.id);
+                setToggle(false);
+              }}
             >
               <Link href={item.link}>{item.title}</Link>
             </li>
           ))}
         </ul>
         <Select
-        className="w-[250px] font-semibold text-base select-none outline-none"
-        isSearchable={true}
-        isClearable={true}
-        // options={players}
-        placeholder="Search player"
-        components={{
-          Control: CustomControl,
-          DropdownIndicator: () => null,
-          IndicatorSeparator: () => null,
-        }}
-        styles={{
-          control: (provided) => ({
-            ...provided,
-            display: "flex",
-            alignItems: "center",
-            padding: "2px 4px",
-            paddingLeft: "8px",
-            cursor: "pointer",
-            borderRadius: "8px",
-            outline: "none",
-          }),
-          option: (provided) => ({
-            ...provided,
-            ":hover": {
-              backgroundColor: "#F5F6F6",
+          className="w-full font-semibold text-base select-none outline-none"
+          isSearchable={true}
+          isClearable={true}
+          // options={players}
+          placeholder="Search player"
+          components={{
+            Control: CustomControl,
+            DropdownIndicator: () => null,
+            IndicatorSeparator: () => null,
+          }}
+          styles={{
+            control: (provided) => ({
+              ...provided,
+              display: "flex",
+              alignItems: "center",
+              padding: "2px 4px",
+              paddingLeft: "8px",
+              cursor: "pointer",
+              borderRadius: "8px",
+              outline: "none",
+            }),
+            option: (provided) => ({
+              ...provided,
+              ":hover": {
+                backgroundColor: "#F5F6F6",
+                color: "#878787",
+              },
+              cursor: "pointer",
               color: "#878787",
+              fontSize: "14px",
+              fontWeight: "500",
+            }),
+            singleValue: (provided) => ({
+              ...provided,
+              color: "#444444",
+            }),
+          }}
+          theme={(theme) => ({
+            ...theme,
+            colors: {
+              ...theme.colors,
+              primary: "none",
             },
-            cursor: "pointer",
-            color: "#878787",
-            fontSize: "14px",
-            fontWeight: "500",
-          }),
-          singleValue: (provided) => ({
-            ...provided,
-            color: "#444444",
-          }),
-        }}
-        theme={(theme) => ({
-          ...theme,
-          colors: {
-            ...theme.colors,
-            primary: "none",
-          },
-        })}
-      />
+          })}
+        />
       </div>
     </div>
   );
