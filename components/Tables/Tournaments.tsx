@@ -25,7 +25,7 @@ export default function TournamentsTable() {
     {
       date: "2022-05",
       tournament: "Australian Open",
-      surface: "Hard",
+      surface: "Grass",
       tournamentId: "/tournament2",
     },
     {
@@ -43,7 +43,7 @@ export default function TournamentsTable() {
     {
       date: "2022-05",
       tournament: "Australian Open",
-      surface: "Hard",
+      surface: "Clay",
       tournamentId: "/tournament5",
     },
     {
@@ -74,8 +74,8 @@ export default function TournamentsTable() {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col sticky top-16 z-20 pb-2.5 bg-[#FFFFFF] gap-2.5">
-        <div className="w-full flex flex-wrap gap-1 sm:gap-2.5 pt-3">
+      <div className="flex flex-col pb-2.5 bg-[#FFFFFF] gap-2.5">
+        <div className="w-full flex flex-wrap gap-1 sm:gap-2.5">
           <DropdownButton
             options={[
               { value: "2024", label: "2024" },
@@ -88,71 +88,82 @@ export default function TournamentsTable() {
           />
         </div>
       </div>
-      <table className="mt-2.5 w-full min-w-min table-auto text-left bg-[#FFFFFF]">
-        <thead>
-          <tr className="sticky top-[125px] z-10 border-b-2 border-b-gray">
-            {tableHead.map((head, index) => (
-              <th key={index} className="bg-[#FFFFFF] px-0.5 py-2 xs:p-2">
-                <div
-                  className="w-full flex justify-between items-center gap-0.5 xs:gap-1 text-xs text-darkGray cursor-pointer select-none "
-                  onClick={() => setIsFiltered(!isFiltered)}
-                >
-                  {head}
-                  {index !== tableHead.length - 1 && (
-                    <IoChevronDownOutline
-                      color="green"
-                      className={`transition-transform duration-300 ease-in-out ${
-                        isFiltered ? "rotate-180" : ""
-                      }`}
-                    />
-                  )}
-                </div>
-              </th>
-            ))}
-          </tr>
-          {/* <tr>
-            <hr className="max-w-full border-b-2 border-b-gray"></hr>
-          </tr> */}
-        </thead>
-        <tbody>
-          {currentData?.map(
-            ({ date, tournament, surface, tournamentId }, index) => {
-              const isLast = index === tableRows.length - 0;
-              const classes = isLast
-                ? "px-0.5 xs:px-2 py-2 xs:py-4"
-                : "px-0.5 xs:px-2 py-2 xs:py-4 border-b-2 border-lightGray";
+      <div className="overflow-auto max-lg:max-h-[500px]">
+        <table className="mt-2.5 w-full min-w-max md:min-w-min table-auto text-left bg-[#FFFFFF]">
+          <thead>
+            <tr className="border-b-2 border-b-gray">
+              {tableHead.map((head, index) => (
+                <th key={index} className="bg-[#FFFFFF] p-2">
+                  <div
+                    className="w-full flex justify-between items-center gap-0.5 xs:gap-1 text-xs text-darkGray cursor-pointer select-none "
+                    onClick={() => setIsFiltered(!isFiltered)}
+                  >
+                    {head}
+                    {index !== tableHead.length - 1 && (
+                      <IoChevronDownOutline
+                        color="green"
+                        className={`transition-transform duration-300 ease-in-out ${
+                          isFiltered ? "rotate-180" : ""
+                        }`}
+                      />
+                    )}
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {currentData?.map(
+              ({ date, tournament, surface, tournamentId }, index) => {
+                const isLast = index === tableRows.length - 0;
+                const classes = isLast
+                  ? "p-2"
+                  : "p-2 border-b-2 border-lightGray";
+                const bgColor =
+                  surface === "Hard"
+                    ? "bg-hard"
+                    : surface === "Grass"
+                    ? "bg-grass"
+                    : surface === "Clay"
+                    ? "bg-clay"
+                    : "";
 
-              return (
-                <tr key={date}>
-                  <td className={`w-[100px] ${classes}`}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
-                      {date}
-                    </p>
-                  </td>
-                  <td className={`w-[500px] ${classes}`}>
-                    <p className="font-semibold text-sm select-none text-darkerGray ">
-                      {tournament}
-                    </p>
-                  </td>
-                  <td className={`w-[120px] ${classes}`}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
-                      {surface}
-                    </p>
-                  </td>
-                  <td className={`w-[90px] ${classes}`}>
-                    <div
-                      className="w-fit border-2 border-green hover:bg-green hover:text-[#FFFFFF] px-2 text-center rounded-lg font-semibold text-sm select-none text-green uppercase cursor-pointer"
-                      onClick={() => router.push(`/tournaments/${tournamentId}`)}
-                    >
-                      Results
-                    </div>
-                  </td>
-                </tr>
-              );
-            }
-          )}
-        </tbody>
-      </table>
+                return (
+                  <tr key={date}>
+                    <td className={`w-fit md:w-[100px] ${classes}`}>
+                      <p className="font-semibold text-sm select-none text-darkerGray">
+                        {date}
+                      </p>
+                    </td>
+                    <td className={`w-fit md:w-[500px] ${classes}`}>
+                      <p className="font-semibold text-sm select-none text-darkerGray ">
+                        {tournament}
+                      </p>
+                    </td>
+                    <td className={`w-fit md:w-[120px] ${classes}`}>
+                      <p
+                        className={`font-semibold text-sm select-none text-[#FFFFFF] ${bgColor} px-4 py-1 rounded-full text-center w-16`}
+                      >
+                        {surface}
+                      </p>
+                    </td>
+                    <td className={`w-fit md:w-[90px] ${classes}`}>
+                      <div
+                        className="w-fit border-2 border-gray hover:bg-green/10 hover:border-green hover:text-green px-4 py-1 text-center rounded-lg font-semibold text-sm select-none text-gray uppercase cursor-pointer"
+                        onClick={() =>
+                          router.push(`/tournaments/${tournamentId}`)
+                        }
+                      >
+                        Results
+                      </div>
+                    </td>
+                  </tr>
+                );
+              }
+            )}
+          </tbody>
+        </table>
+      </div>
       <Pagination
         dataPerPage={DataPerPage}
         totalData={tableRows.length}
