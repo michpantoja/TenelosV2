@@ -3,13 +3,138 @@
 import React, { useState } from "react";
 import DropdownButton from "../DropdownButton";
 import { IoChevronDownOutline } from "react-icons/io5";
-import { LuArrowUpDown } from "react-icons/lu";
 import ReactCountryFlag from "react-country-flag";
 import Pagination from "../Pagination";
+import { NegativeELO, PositiveELO } from "../ELOLabels";
+
+function Table({
+  tableHead,
+  currentData,
+  playBgColor,
+}: {
+  tableHead: string[];
+  currentData: any[];
+  playBgColor: string;
+}) {
+  const [isFiltered, setIsFiltered] = useState(false);
+  return (
+    <table className="mt-2.5 w-full min-w-min table-auto text-left bg-[#FFFFFF]">
+      <thead>
+        <tr className="border-b-2 border-b-gray">
+          {tableHead.map((head, index) => (
+            <th
+              key={index}
+              className="cursor-pointer bg-[#FFFFFF] px-0.5 py-2 xs:p-2 select-none"
+              onClick={() => setIsFiltered(!isFiltered)}
+            >
+              <div className="w-full flex justify-between items-center gap-0.5 xs:gap-1 text-xs text-darkGray cursor-pointer select-none">
+                {head}
+                <IoChevronDownOutline
+                  color="green"
+                  className={`transition-transform duration-300 ease-in-out ${
+                    isFiltered ? "rotate-180" : ""
+                  }`}
+                />
+              </div>
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {currentData?.map(
+          (
+            {
+              rank,
+              rankDiff,
+              bestRank,
+              countryCode,
+              name,
+              rating,
+              ratingDiff,
+              peak,
+              age,
+            },
+            index
+          ) => {
+            const isLast = index === currentData.length - 0;
+            const classes = isLast
+              ? "px-0.5 xs:px-2 py-2 xs:py-4"
+              : "px-0.5 xs:px-2 py-2 xs:py-4 border-b-2 border-lightGray";
+
+            return (
+              <tr key={name}>
+                <td className={classes}>
+                  <p className="font-semibold text-sm select-none text-darkerGray">
+                    {rank}
+                  </p>
+                </td>
+                <td className={classes}>
+                  {rankDiff > 0 ? (
+                    <PositiveELO elo={rankDiff} />
+                  ) : rankDiff < 0 ? (
+                    <NegativeELO elo={rankDiff} />
+                  ) : (
+                    <>{""}</>
+                  )}
+                </td>
+                <td className={classes}>
+                  <p className="font-semibold text-sm select-none text-darkerGray">
+                    {bestRank}
+                  </p>
+                </td>
+                <td className={classes}>
+                  <div className="flex flex-wrap items-center gap-1 sm:gap-2">
+                    <ReactCountryFlag
+                      countryCode={countryCode}
+                      style={{
+                        // filter: "drop-shadow(0 0 0.12rem black)",
+                        userSelect: "none",
+                      }}
+                      svg
+                    />
+                    <p className="font-semibold text-sm select-none text-green hover:underline cursor-pointer">
+                      {name}
+                    </p>
+                  </div>
+                </td>
+                <td className={classes}>
+                  <p
+                    className={`w-fit px-4 py-1 bg-${playBgColor} rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center`}
+                  >
+                    {rating}
+                  </p>
+                </td>
+                <td className={classes}>
+                  {ratingDiff > 0 ? (
+                    <PositiveELO elo={ratingDiff} />
+                  ) : ratingDiff < 0 ? (
+                    <NegativeELO elo={ratingDiff} />
+                  ) : (
+                    <>{""}</>
+                  )}
+                </td>
+                <td className={classes}>
+                  <p className="font-semibold text-sm select-none text-darkerGray">
+                    {peak}
+                  </p>
+                </td>
+                <td className={classes}>
+                  <p className="font-semibold text-sm select-none text-darkerGray max-sm:text-right">
+                    {age}
+                  </p>
+                </td>
+              </tr>
+            );
+          }
+        )}
+      </tbody>
+    </table>
+  );
+}
 
 export default function LiveRatingsTable() {
   const [toggleRecords, seToggleRecords] = useState(1);
-  const [isFiltered, setIsFiltered] = useState(false);
+
   //Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [DataPerPage, setDataPerPage] = useState(20);
@@ -17,28 +142,28 @@ export default function LiveRatingsTable() {
     {
       id: 1,
       name: "Overall",
+      playBgColor: "overall",
     },
     {
       id: 2,
       name: "Hard",
+      playBgColor: "hard",
     },
     {
       id: 3,
       name: "Clay",
+      playBgColor: "clay",
     },
     {
       id: 4,
       name: "Grass",
-    },
-    {
-      id: 5,
-      name: "ATP",
+      playBgColor: "grass",
     },
   ];
 
   const tableHead = [
     "Rank",
-    <LuArrowUpDown key={""} color="#5F5F5F" size={13} />,
+    "↑↓",
     "Best Rank",
     "Name",
     "Rating",
@@ -50,287 +175,287 @@ export default function LiveRatingsTable() {
   const tableRows = [
     {
       rank: "1",
-      rankChanges: "2",
+      rankDiff: 2,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "1",
+      ratingDiff: 1,
       peak: "3092",
       age: "36",
     },
     {
       rank: "2",
-      rankChanges: "3",
+      rankDiff: -3,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "3",
+      ratingDiff: 3,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
     {
       rank: "1",
-      rankChanges: "",
+      rankDiff: 0,
       bestRank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
       rating: "3093",
-      ratingChanges: "",
+      ratingDiff: 0,
       peak: "3092",
       age: "36",
     },
@@ -366,8 +491,8 @@ export default function LiveRatingsTable() {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col sticky top-16 z-20 pb-2.5 bg-[#FFFFFF] gap-2.5">
-        <div className="flex gap-2.5 pt-3">
+      <div className="flex flex-col pb-2.5 bg-[#FFFFFF] gap-2.5">
+        <div className="flex gap-2.5">
           {recordType.map((item) => (
             <div
               key={item.id}
@@ -414,110 +539,13 @@ export default function LiveRatingsTable() {
           />
         </div>
       </div>
-      <table className="mt-2.5 w-full min-w-min table-auto text-left bg-[#FFFFFF]">
-        <thead>
-          <tr className="sticky top-[203.2px] sm:top-[160px] z-10 border-b-2 border-b-gray" >
-            {tableHead.map((head, index) => (
-              <th
-                key={index}
-                className="cursor-pointer bg-[#FFFFFF] px-0.5 py-2 xs:p-2 select-none"
-                onClick={() => setIsFiltered(!isFiltered)}
-              >
-                <div className="w-full flex justify-between items-center gap-0.5 xs:gap-1 text-xs text-darkGray cursor-pointer select-none">
-                  {head}
-                  <IoChevronDownOutline
-                    color="green"
-                    className={`transition-transform duration-300 ease-in-out ${
-                      isFiltered ? "rotate-180" : ""
-                    }`}
-                  />
-                </div>
-              </th>
-            ))}
-          </tr>
-          {/* <tr>
-            <hr className="max-w-full border-b-2 border-b-gray"></hr>
-          </tr> */}
-        </thead>
-        <tbody>
-          {currentData?.map(
-            (
-              {
-                rank,
-                rankChanges,
-                bestRank,
-                countryCode,
-                name,
-                rating,
-                ratingChanges,
-                peak,
-                age,
-              },
-              index
-            ) => {
-              const isLast = index === tableRows.length - 0;
-              const classes = isLast
-                ? "px-0.5 xs:px-2 py-2 xs:py-4"
-                : "px-0.5 xs:px-2 py-2 xs:py-4 border-b-2 border-lightGray";
-
-              return (
-                <tr key={name}>
-                  <td className={classes}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
-                      {rank}
-                    </p>
-                  </td>
-                  <td className={classes}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
-                      {rankChanges}
-                    </p>
-                  </td>
-                  <td className={classes}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
-                      {bestRank}
-                    </p>
-                  </td>
-                  <td className={classes}>
-                    <div className="flex flex-wrap items-center gap-1 sm:gap-2">
-                      <ReactCountryFlag
-                        countryCode={countryCode}
-                        style={{
-                          // filter: "drop-shadow(0 0 0.12rem black)",
-                          userSelect: "none",
-                        }}
-                        svg
-                      />
-                      <p className="font-semibold text-sm select-none text-darkerGray hover:text-green cursor-pointer">
-                        {name}
-                      </p>
-                    </div>
-                  </td>
-                  <td className={classes}>
-                    <p className="font-semibold text-sm select-none text-darkerGray max-sm:text-center">
-                      {rating}
-                    </p>
-                  </td>
-                  <td className={classes}>
-                    <p className="font-semibold text-sm select-none text-darkerGray ">
-                      {ratingChanges}
-                    </p>
-                  </td>
-                  <td className={classes}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
-                      {peak}
-                    </p>
-                  </td>
-                  <td className={classes}>
-                    <p className="font-semibold text-sm select-none text-darkerGray max-sm:text-right">
-                      {age}
-                    </p>
-                  </td>
-                </tr>
-              );
-            }
-          )}
-        </tbody>
-      </table>
+      <div className="overflow-x-auto max-lg:max-h-[500px]">
+        <Table
+          tableHead={tableHead}
+          currentData={currentData}
+          playBgColor={recordType[toggleRecords - 1].playBgColor}
+        />
+      </div>
       <Pagination
         dataPerPage={DataPerPage}
         totalData={tableRows.length}

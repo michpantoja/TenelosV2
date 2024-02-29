@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={ss3.className}>
         <Topbar />
         <main className="w-full px-6 xl:px-32 pb-4 xl:pb-8 gap-6 flex flex-col">
-          <Banner />
+          {/* <Banner /> */}
           {children}
         </main>
         <Footer />

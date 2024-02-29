@@ -1,27 +1,96 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 
+function Table({
+  tableHead,
+  tableRows,
+  playBgColor,
+}: {
+  tableHead: string[];
+  tableRows: any[];
+  playBgColor: string;
+}) {
+  return (
+    <table className="w-full min-w-min table-auto text-left">
+      <thead>
+        <tr className="border-b border-b-gray">
+          {tableHead.map((head, index) => (
+            <th key={index} className="bg-[#FFFFFF] px-4 py-2 select-none">
+              <div className="font-medium text-xs text-darkGray select-none">
+                {head}
+              </div>
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {tableRows?.map(
+          ({ rank, countryCode, name, last10 }: any, index: number) => {
+            const isEven = index % 2 === 0;
+            const classes = isEven ? "p-4 bg-lightGray" : "p-4";
+
+            return (
+              <tr key={name}>
+                <td className={classes}>
+                  <p className="font-medium text-sm select-none text-darkerGray">
+                    {rank}
+                  </p>
+                </td>
+                <td className={classes}>
+                  <div className="flex items-center gap-2">
+                    <ReactCountryFlag
+                      countryCode={countryCode}
+                      style={{
+                        userSelect: "none",
+                      }}
+                      svg
+                    />
+                    <p className="font-medium text-sm select-none text-green hover:underline cursor-pointer">
+                      {name}
+                    </p>
+                  </div>
+                </td>
+                <td className={classes}>
+                  <p
+                    className={`w-fit px-4 lg:px-2 py-1 bg-${playBgColor} rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center`}
+                  >
+                    {last10}
+                  </p>
+                </td>
+              </tr>
+            );
+          }
+        )}
+      </tbody>
+    </table>
+  );
+}
+
 export default function Last10HPTable() {
-  const [toggleRecords, seToggleRecords] = useState(1);
+  const [toggleRecords, setToggleRecords] = useState(1);
 
   const recordType = [
     {
       id: 1,
       name: "Overall",
+      playBgColor: "overall",
     },
     {
       id: 2,
       name: "Hard",
+      playBgColor: "hard",
     },
     {
       id: 3,
       name: "Clay",
+      playBgColor: "clay",
     },
     {
       id: 4,
       name: "Grass",
+      playBgColor: "grass",
     },
   ];
 
@@ -105,62 +174,18 @@ export default function Last10HPTable() {
                   ? "text-green underline underline-offset-2"
                   : "text-darkGray"
               }`}
-              onClick={() => seToggleRecords(item.id)}
+              onClick={() => setToggleRecords(item.id)}
             >
               {item.name}
             </div>
           ))}
         </div>
       </div>
-      <table className="w-full min-w-min table-auto text-left">
-        <thead>
-          <tr className="border-b border-b-gray">
-            {tableHead.map((head, index) => (
-              <th key={index} className="bg-[#FFFFFF] px-4 py-2 select-none">
-                <div className="font-medium text-xs text-darkGray select-none">
-                  {head}
-                </div>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {tableRows?.map(({ rank, countryCode, name, last10 }, index) => {
-            const isEven = index % 2 === 0;
-            const classes = isEven ? "p-4 bg-lightGray" : "p-4";
-
-            return (
-              <tr key={name}>
-                <td className={classes}>
-                  <p className="font-medium text-sm select-none text-darkerGray">
-                    {rank}
-                  </p>
-                </td>
-                <td className={classes}>
-                  <div className="flex items-center gap-2">
-                    <ReactCountryFlag
-                      countryCode={countryCode}
-                      style={{
-                        // filter: "drop-shadow(0 0 0.12rem black)",
-                        userSelect: "none",
-                      }}
-                      svg
-                    />
-                    <p className="font-medium text-sm select-none text-darkerGray hover:text-green cursor-pointer">
-                      {name}
-                    </p>
-                  </div>
-                </td>
-                <td className={classes}>
-                  <p className="font-semibold text-sm select-none text-darkerGray">
-                    {last10}
-                  </p>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <Table
+        tableHead={tableHead}
+        tableRows={tableRows}
+        playBgColor={recordType[toggleRecords - 1].playBgColor}
+      />
     </div>
   );
 }
