@@ -3,33 +3,97 @@
 import React, { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 
+function Table({
+  tableHead,
+  tableRows,
+  playBgColor,
+}: {
+  tableHead: string[];
+  tableRows: any[];
+  playBgColor: string;
+}) {
+  return (
+    <table className="w-full table-auto text-left">
+      <thead>
+        <tr className="sticky top-0 border-b border-b-gray">
+          {tableHead.map((head, index) => (
+            <th key={index} className="bg-[#FFFFFF] px-4 py-2 select-none">
+              <div className="font-medium text-xs text-darkGray select-none">
+                {head}
+              </div>
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {tableRows?.map(({ rank, countryCode, name, peak, date }, index) => {
+          const isEven = index % 2 === 0;
+          const classes = isEven ? "p-4 bg-lightGray" : "p-4";
+          return (
+            <tr key={name}>
+              <td className={`w-[30px] ${classes}`}>
+                <p className="font-medium text-sm select-none text-darkerGray">
+                  {rank}
+                </p>
+              </td>
+              <td className={classes}>
+                <div className="flex items-center gap-2">
+                  <ReactCountryFlag
+                    countryCode={countryCode}
+                    style={{
+                      // filter: "drop-shadow(0 0 0.12rem black)",
+                      userSelect: "none",
+                    }}
+                    svg
+                  />
+                  <p className="font-medium text-sm select-none text-green hover:underline cursor-pointer">
+                    {name}
+                  </p>
+                </div>
+              </td>
+              <td className={classes}>
+                <p
+                  className={`w-fit px-4 lg:px-2 py-1 bg-${playBgColor} rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center`}
+                >
+                  {peak}
+                </p>
+              </td>
+              <td className={classes}>
+                <p className="font-semibold text-sm select-none text-darkerGray">
+                  {date}
+                </p>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  );
+}
+
 export default function Top15ATPTable() {
   const [toggleRecords, seToggleRecords] = useState(1);
 
   const recordType = [
     {
       id: 1,
-      name: "Average",
+      name: "Overall",
+      playBgColor: "overall",
     },
     {
       id: 2,
-      name: "Overall",
+      name: "Hard",
+      playBgColor: "hard",
     },
     {
       id: 3,
-      name: "Hard",
+      name: "Clay",
+      playBgColor: "clay",
     },
     {
       id: 4,
-      name: "Clay",
-    },
-    {
-      id: 5,
       name: "Grass",
-    },
-    {
-      id: 5,
-      name: "ATP",
+      playBgColor: "grass",
     },
   ];
 
@@ -105,70 +169,70 @@ export default function Top15ATPTable() {
       countryCode: "RS",
       name: "Djokovic Novac",
       peak: "3092",
-      date: "1985-09"
+      date: "1985-09",
     },
     {
       rank: "1",
       countryCode: "RS",
       name: "Djokovic Novac",
       peak: "3092",
-      date: "1985-09"
+      date: "1985-09",
     },
     {
       rank: "1",
       countryCode: "RS",
       name: "Djokovic Novac",
       peak: "3092",
-      date: "1985-09"
+      date: "1985-09",
     },
     {
       rank: "1",
       countryCode: "RS",
       name: "Djokovic Novac",
       peak: "3092",
-      date: "1985-09"
+      date: "1985-09",
     },
     {
       rank: "1",
       countryCode: "RS",
       name: "Djokovic Novac",
       peak: "3092",
-      date: "1985-09"
+      date: "1985-09",
     },
     {
       rank: "1",
       countryCode: "RS",
       name: "Djokovic Novac",
       peak: "3092",
-      date: "1985-09"
+      date: "1985-09",
     },
     {
       rank: "1",
       countryCode: "RS",
       name: "Djokovic Novac",
       peak: "3092",
-      date: "1985-09"
+      date: "1985-09",
     },
     {
       rank: "1",
       countryCode: "RS",
       name: "Djokovic Novac",
       peak: "3092",
-      date: "1985-09"
+      date: "1985-09",
     },
     {
       rank: "1",
       countryCode: "RS",
       name: "Djokovic Novac",
       peak: "3092",
-      date: "1985-09"
+      date: "1985-09",
     },
     {
       rank: "1",
       countryCode: "RS",
       name: "Djokovic Novac",
       peak: "3092",
-      date: "1985-09"
+      date: "1985-09",
     },
   ];
 
@@ -194,7 +258,7 @@ export default function Top15ATPTable() {
           ))}
         </div>
       </div>
-      {toggleRecords === 1 ? (
+      {toggleRecords === 1 && (
         <table className="w-full min-w-min table-auto text-left">
           <thead>
             <tr className="border-b border-b-gray">
@@ -229,13 +293,13 @@ export default function Top15ATPTable() {
                         }}
                         svg
                       />
-                      <p className="font-medium text-sm select-none text-darkerGray hover:text-green cursor-pointer">
+                      <p className="font-medium text-sm select-none text-green hover:underline cursor-pointer">
                         {name}
                       </p>
                     </div>
                   </td>
                   <td className={classes}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
+                    <p className="w-fit px-4 lg:px-2 py-1 bg-overall rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center">
                       {elo}
                     </p>
                   </td>
@@ -244,62 +308,16 @@ export default function Top15ATPTable() {
             })}
           </tbody>
         </table>
-      ) : (
-        <table className="w-full min-w-min table-auto text-left">
-          <thead>
-            <tr className="border-b border-b-gray">
-              {tableHead.map((head, index) => (
-                <th key={index} className="bg-[#FFFFFF] px-4 py-2 select-none">
-                  <div className="font-medium text-xs text-darkGray select-none">
-                    {head}
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {tableRows?.map(({ rank, countryCode, name, peak, date }, index) => {
-              const isEven = index % 2 === 0;
-              const classes = isEven ? "p-4 bg-lightGray" : "p-4";
-
-              return (
-                <tr key={name}>
-                  <td className={`w-[50px] ${classes}`}>
-                    <p className="font-medium text-sm select-none text-darkerGray">
-                      {rank}
-                    </p>
-                  </td>
-                  <td className={classes}>
-                    <div className="flex items-center gap-2">
-                      <ReactCountryFlag
-                        countryCode={countryCode}
-                        style={{
-                          // filter: "drop-shadow(0 0 0.12rem black)",
-                          userSelect: "none",
-                        }}
-                        svg
-                      />
-                      <p className="font-medium text-sm select-none text-darkerGray hover:text-green cursor-pointer">
-                        {name}
-                      </p>
-                    </div>
-                  </td>
-                  <td className={classes}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
-                      {peak}
-                    </p>
-                  </td>
-                  <td className={classes}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
-                      {date}
-                    </p>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
       )}
+      <div className="overflow-x-auto max-lg:max-h-[500px]">
+        {toggleRecords >= 2 && (
+          <Table
+            tableHead={tableHead}
+            tableRows={tableRows}
+            playBgColor={recordType[toggleRecords - 1].playBgColor}
+          />
+        )}
+      </div>
     </div>
   );
 }
