@@ -13,178 +13,337 @@ export default function PlayersTable() {
   //Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [DataPerPage, setDataPerPage] = useState(20);
-  const recordType = [
-    {
-      id: 1,
-      name: "Overall",
-    },
-    {
-      id: 2,
-      name: "Hard",
-    },
-    {
-      id: 3,
-      name: "Clay",
-    },
-    {
-      id: 4,
-      name: "Grass",
-    },
-    {
-      id: 5,
-      name: "ATP",
-    },
-  ];
 
-  const tableHead = ["#", "Name", "Overall", "Overall Peak"];
+  const tableHead = [
+    "#",
+    "Name",
+    "ATP",
+    "ATP Peak",
+    "Overall",
+    "Overall Peak",
+    "Hard",
+    "Hard Peak",
+    "Clay",
+    "Clay Peak",
+    "Grass",
+    "Grass Peak",
+  ];
 
   const tableRows = [
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
     {
       rank: "1",
       countryCode: "US",
       name: "Djokovic Novac",
+      atp: "3093",
+      atpPeak: "3092(2023-09)",
       overall: "3093",
       overallPeak: "3092(2023-09)",
+      hard: "3093",
+      hardPeak: "3092(2023-09)",
+      clay: "3093",
+      clayPeak: "3092(2023-09)",
+      grass: "3093",
+      grassPeak: "3092(2023-09)",
     },
   ];
 
@@ -208,22 +367,7 @@ export default function PlayersTable() {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col sticky top-16 z-20 pb-2.5 bg-[#FFFFFF] gap-2.5">
-        <div className="flex gap-2.5 pt-3">
-          {recordType.map((item) => (
-            <div
-              key={item.id}
-              className={`text-base font-semibold cursor-pointer select-none ${
-                toggleRecords === item.id
-                  ? "text-green underline underline-offset-2"
-                  : "text-darkGray"
-              }`}
-              onClick={() => seToggleRecords(item.id)}
-            >
-              {item.name}
-            </div>
-          ))}
-        </div>
+      <div className="flex flex-col md:flex-row justify-between items-center sticky top-[67.5px] md:top-[67px] lg:top-[73px] z-20 pb-2.5 bg-[#FFFFFF] gap-2.5">
         <div className="w-full flex flex-wrap gap-1 sm:gap-2.5">
           <DropdownButton
             options={[{ value: "All Countries", label: "All Countries" }]}
@@ -238,73 +382,143 @@ export default function PlayersTable() {
             onChange={handleDataPerPageChange}
           />
         </div>
+        <div className="flex gap-4 self-end">
+          <div className="flex items-center gap-1">
+            <div className="w-3 h-3 bg-hard rounded-sm"></div>
+            <p className="text-xs font-semibold text-gray select-none">Hard</p>
+          </div>
+          <div className="flex items-center gap-1">
+            <div className="w-3 h-3 bg-clay rounded-sm"></div>
+            <p className="text-xs font-semibold text-gray select-none">Clay</p>
+          </div>
+          <div className="flex items-center gap-1">
+            <div className="w-3 h-3 bg-grass rounded-sm"></div>
+            <p className="text-xs font-semibold text-gray select-none">Grass</p>
+          </div>
+        </div>
       </div>
-      <table className="mt-2.5 w-full min-w-min table-auto text-left bg-[#FFFFFF]">
-        <thead>
-          <tr className="sticky top-[160px] z-10 border-b-2 border-b-gray">
-            {tableHead.map((head, index) => (
-              <th
-                key={index}
-                className="bg-[#FFFFFF] px-0.5 py-2 xs:p-2 select-none"
-              >
-                <div
-                  className={` w-full flex justify-between items-center gap-0.5 xs:gap-1 text-xs text-darkGray select-none`}
-                >
-                  {head}
-                </div>
-              </th>
-            ))}
-          </tr>
-          {/* <tr>
+      <div className="overflow-x-auto max-h-[500px]">
+        <table className="mt-2.5 w-full min-w-max table-auto text-left bg-[#FFFFFF]">
+          <thead>
+            <tr className="sticky top-0 md:-top-1 z-10 border-b-2 border-b-gray">
+              {tableHead.map((head, index) => (
+                <th key={index} className="bg-[#FFFFFF] p-2 select-none">
+                  <div
+                    className={`w-full flex justify-between items-center gap-0.5 xs:gap-1 text-xs text-darkGray select-none`}
+                  >
+                    {head}
+                  </div>
+                </th>
+              ))}
+            </tr>
+            {/* <tr>
             <hr className="max-w-full border-b-2 border-b-gray"></hr>
           </tr> */}
-        </thead>
-        <tbody>
-          {currentData?.map(
-            ({ rank, countryCode, name, overall, overallPeak }, index) => {
-              const isLast = index === tableRows.length - 0;
-              const classes = isLast
-                ? "px-0.5 xs:px-2 py-2 xs:py-4"
-                : "px-0.5 xs:px-2 py-2 xs:py-4 border-b-2 border-lightGray";
+          </thead>
+          <tbody>
+            {currentData?.map(
+              (
+                {
+                  rank,
+                  countryCode,
+                  name,
+                  atp,
+                  atpPeak,
+                  overall,
+                  overallPeak,
+                  hard,
+                  hardPeak,
+                  clay,
+                  clayPeak,
+                  grass,
+                  grassPeak,
+                },
+                index
+              ) => {
+                const isLast = index === tableRows.length - 0;
+                const classes = isLast
+                  ? "p-2 xs:py-4"
+                  : "p-2 xs:py-4 border-b-2 border-lightGray";
 
-              return (
-                <tr key={name}>
-                  <td className={`w-[50px] ${classes}`}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
-                      {rank}
-                    </p>
-                  </td>
-                  <td className={`w-[500px] ${classes}`}>
-                    <div className="flex flex-wrap items-center gap-1 sm:gap-2">
-                      <ReactCountryFlag
-                        countryCode={countryCode}
-                        style={{
-                          // filter: "drop-shadow(0 0 0.12rem black)",
-                          userSelect: "none",
-                        }}
-                        svg
-                      />
-                      <p className="font-semibold text-sm select-none text-darkerGray hover:text-green cursor-pointer">
-                        {name}
+                return (
+                  <tr key={name}>
+                    <td className={`${classes}`}>
+                      <p className="font-semibold text-sm select-none text-darkerGray">
+                        {rank}
                       </p>
-                    </div>
-                  </td>
-                  <td className={`w-[100px] ${classes}`}>
-                    <p className="font-semibold text-sm select-none text-darkerGray ">
-                      {overall}
-                    </p>
-                  </td>
-                  <td className={`w-[120px] ${classes}`}>
-                    <p className="font-semibold text-sm select-none text-darkerGray">
-                      {overallPeak}
-                    </p>
-                  </td>
-                </tr>
-              );
-            }
-          )}
-        </tbody>
-      </table>
+                    </td>
+                    <td className={`${classes}`}>
+                      <div className="flex flex-wrap items-center gap-1 sm:gap-2">
+                        <ReactCountryFlag
+                          countryCode={countryCode}
+                          style={{
+                            // filter: "drop-shadow(0 0 0.12rem black)",
+                            userSelect: "none",
+                          }}
+                          svg
+                        />
+                        <p className="font-semibold text-sm select-none text-darkerGray hover:text-green cursor-pointer">
+                          {name}
+                        </p>
+                      </div>
+                    </td>
+                    <td className={`${classes}`}>
+                      <p className="px-2 py-1 bg-atp rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
+                        {atp}
+                      </p>
+                    </td>
+                    <td className={`${classes}`}>
+                      <p className="font-semibold text-sm select-none text-darkerGray">
+                        {atpPeak}
+                      </p>
+                    </td>
+                    <td className={`${classes}`}>
+                      <p className="px-2 py-1 bg-overall rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
+                        {overall}
+                      </p>
+                    </td>
+                    <td className={`${classes}`}>
+                      <p className="font-semibold text-sm select-none text-darkerGray">
+                        {overallPeak}
+                      </p>
+                    </td>
+                    <td className={`${classes}`}>
+                      <p className="px-2 py-1 bg-hard rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center">
+                        {hard}
+                      </p>
+                    </td>
+                    <td className={`${classes}`}>
+                      <p className="font-semibold text-sm select-none text-darkerGray">
+                        {hardPeak}
+                      </p>
+                    </td>
+                    <td className={`${classes}`}>
+                      <p className="px-2 py-1 bg-clay rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center">
+                        {clay}
+                      </p>
+                    </td>
+                    <td className={`${classes}`}>
+                      <p className="font-semibold text-sm select-none text-darkerGray">
+                        {clayPeak}
+                      </p>
+                    </td>
+                    <td className={`${classes}`}>
+                      <p className="px-2 py-1 bg-grass rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center">
+                        {grass}
+                      </p>
+                    </td>
+                    <td className={`${classes}`}>
+                      <p className="font-semibold text-sm select-none text-darkerGray">
+                        {grassPeak}
+                      </p>
+                    </td>
+                  </tr>
+                );
+              }
+            )}
+          </tbody>
+        </table>
+      </div>
       <Pagination
         dataPerPage={DataPerPage}
         totalData={tableRows.length}

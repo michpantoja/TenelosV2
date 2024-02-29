@@ -44,7 +44,7 @@ export default function About() {
           </p>
         </div>
       </div>
-      <div className="w-full flex flex-col lg:flex-row gap-4 pt-4 border-t border-gray">
+      <div className="w-full flex flex-col lg:flex-row gap-4 pt-6 border-t border-gray">
         <div className="w-full lg:w-3/4 flex flex-col gap-4">
           <p className="font-semibold text-xl text-darkerGray">
             Frequently Asked Questions (FAQs)
