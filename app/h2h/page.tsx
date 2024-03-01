@@ -6,6 +6,7 @@ import H2HMatchHistoryTable from "@/components/Tables/H2HMatchHistory";
 import React, { useState } from "react";
 import Select from "react-select";
 import Image from "next/image";
+import MatchPredictionCard from "@/components/MatchPredictionCard";
 
 export default function H2H() {
   const [activeTab, setActiveTab] = useState("Bio");
@@ -52,9 +53,7 @@ export default function H2H() {
               height={200}
               quality={100}
               alt={""}
-              className={`bg-contain rounded-full w-[80px] sm:w-[120px] lg:w-[200px] h-[80px] sm:h-[120px] lg:h-[200px] select-none border-4 
-          
-        `}
+              className={`bg-contain rounded-full w-[80px] sm:w-[120px] lg:w-[200px] h-[80px] sm:h-[120px] lg:h-[200px] select-none border-4`}
             />
             <Select
               className="w-[160px] md:w-[280px] font-semibold text-base select-none outline-none"
@@ -163,7 +162,10 @@ export default function H2H() {
               </div>
             </div>
           </div>
-          <BarChart />
+          <div className="flex flex-col justify-center items-center gap-6">
+            <BarChart />
+            <MatchPredictionCard winner="Novak Djokovic" score="6-4, 6-3" />
+          </div>
           <div className="flex flex-col items-center gap-4">
             <Image
               src="/assets/novak.png"
@@ -171,9 +173,7 @@ export default function H2H() {
               height={200}
               quality={100}
               alt={""}
-              className={`bg-contain rounded-full w-[80px] sm:w-[120px] lg:w-[200px] h-[80px] sm:h-[120px] lg:h-[200px] select-none border-4 
-          
-        `}
+              className={`bg-contain rounded-full w-[80px] sm:w-[120px] lg:w-[200px] h-[80px] sm:h-[120px] lg:h-[200px] select-none border-4`}
             />
             <Select
               className="w-[160px] md:w-[280px] font-semibold text-base select-none outline-none"
