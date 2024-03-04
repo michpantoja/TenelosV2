@@ -8,14 +8,14 @@ import ReactCountryFlag from "react-country-flag";
 
 export default function PlayerProfile() {
   const [activeTab, setActiveTab] = useState("Bio");
-  const tabs = ["Bio", "Charts", "ELO Performance", "Match History"];
+  const tabs = ["Bio", "Charts", "Match History"];
 
   return (
     <div className="flex flex-col gap-6">
       <div className="relative w-full h-[380px] md:h-[450px] bg-gradient-to-r from-[#84C1B1] to-[#C0C3C2] rounded-b-lg px-4 lg:px-10 py-8 flex items-end gap-12">
         <div className="w-full flex flex-col gap-2">
           <h1 className="text-2xl font-bold text-green">Novak Djokovic</h1>
-          <p className="font-semibold text-darkerGray text-sm">ELO Rankings:</p>
+          <p className="font-semibold text-darkerGray text-sm">Player Data:</p>
           <div className="overflow-x-auto w-full xl:w-fit border border-darkerGray rounded-lg p-4">
             <div className="w-fit min-w-max flex">
               <div className="flex flex-col gap-2">
@@ -274,9 +274,8 @@ export default function PlayerProfile() {
       )}
 
       {activeTab === "Charts" && <div></div>}
-
-      {activeTab === "ELO Performance" && (
-        <div className="flex flex-col gap-6 p-8 bg-lightGray rounded-lg">
+      {activeTab === "Match History" && <>
+      <div className="flex flex-col gap-6 p-8 bg-lightGray rounded-lg">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center max-lg:gap-2">
             <p className="font-semibold text-darkerGray text-lg">
               ELO Performance
@@ -361,9 +360,9 @@ export default function PlayerProfile() {
             </div>
           </div>
         </div>
-      )}
-
-      {activeTab === "Match History" && <PlayerMatchHistoryTable />}
+        <PlayerMatchHistoryTable />
+      </>
+      }
     </div>
   );
 }
