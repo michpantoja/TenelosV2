@@ -1,5 +1,6 @@
 "use client";
 
+import PlayerGraph from "@/components/Charts/PlayerGraph";
 import News from "@/components/News";
 import PlayerMatchHistoryTable from "@/components/Tables/PlayerMatchHistory";
 import Image from "next/image";
@@ -273,96 +274,97 @@ export default function PlayerProfile() {
         </div>
       )}
 
-      {activeTab === "Charts" && <div></div>}
-      {activeTab === "Match History" && <>
-      <div className="flex flex-col gap-6 p-8 bg-lightGray rounded-lg">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center max-lg:gap-2">
-            <p className="font-semibold text-darkerGray text-lg">
-              ELO Performance
-            </p>
-            <div className="flex gap-4 self-end">
-              <div className="flex items-center gap-1">
-                <div className="w-3 h-3 bg-hard rounded-sm"></div>
-                <p className="text-xs font-semibold text-gray select-none">
-                  Hard
-                </p>
+      {activeTab === "Charts" && <PlayerGraph />}
+      {activeTab === "Match History" && (
+        <>
+          <div className="flex flex-col gap-6 p-8 bg-lightGray rounded-lg">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center max-lg:gap-2">
+              <p className="font-semibold text-darkerGray text-lg">
+                ELO Performance
+              </p>
+              <div className="flex gap-4 self-end">
+                <div className="flex items-center gap-1">
+                  <div className="w-3 h-3 bg-hard rounded-sm"></div>
+                  <p className="text-xs font-semibold text-gray select-none">
+                    Hard
+                  </p>
+                </div>
+                <div className="flex items-center gap-1">
+                  <div className="w-3 h-3 bg-clay rounded-sm"></div>
+                  <p className="text-xs font-semibold text-gray select-none">
+                    Clay
+                  </p>
+                </div>
+                <div className="flex items-center gap-1">
+                  <div className="w-3 h-3 bg-grass rounded-sm"></div>
+                  <p className="text-xs font-semibold text-gray select-none">
+                    Grass
+                  </p>
+                </div>
               </div>
-              <div className="flex items-center gap-1">
-                <div className="w-3 h-3 bg-clay rounded-sm"></div>
-                <p className="text-xs font-semibold text-gray select-none">
-                  Clay
-                </p>
+            </div>
+            <div className="w-full flex flex-col lg:flex-row justify-between gap-6">
+              <div className="w-full flex flex-col gap-2">
+                <div className="flex justify-between">
+                  <p>Overall:</p>
+                  <p className="px-2 py-1 bg-overall rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
+                    3213
+                  </p>
+                </div>
+                <div className="flex justify-between">
+                  <p>Last 10:</p>
+                  <p className="px-2 py-1 bg-overall rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
+                    3213
+                  </p>
+                </div>
               </div>
-              <div className="flex items-center gap-1">
-                <div className="w-3 h-3 bg-grass rounded-sm"></div>
-                <p className="text-xs font-semibold text-gray select-none">
-                  Grass
-                </p>
+              <div className="w-full flex flex-col gap-2">
+                <div className="flex justify-between">
+                  <p>Hard:</p>
+                  <p className="px-2 py-1 bg-hard rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
+                    3213
+                  </p>
+                </div>
+                <div className="flex justify-between">
+                  <p>Last 10:</p>
+                  <p className="px-2 py-1 bg-hard rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
+                    3213
+                  </p>
+                </div>
+              </div>
+              <div className="w-full flex flex-col gap-2">
+                <div className="flex justify-between">
+                  <p>Clay:</p>
+                  <p className="px-2 py-1 bg-clay rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
+                    3213
+                  </p>
+                </div>
+                <div className="flex justify-between">
+                  <p>Last 10:</p>
+                  <p className="px-2 py-1 bg-clay rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
+                    3213
+                  </p>
+                </div>
+              </div>
+              <div className="w-full flex flex-col gap-2">
+                <div className="flex justify-between">
+                  <p>Grass:</p>
+                  <p className="px-2 py-1 bg-grass rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
+                    3213
+                  </p>
+                </div>
+                <div className="flex justify-between">
+                  <p>Last 10:</p>
+                  <p className="px-2 py-1 bg-grass rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
+                    3213
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-          <div className="w-full flex flex-col lg:flex-row justify-between gap-6">
-            <div className="w-full flex flex-col gap-2">
-              <div className="flex justify-between">
-                <p>Overall:</p>
-                <p className="px-2 py-1 bg-overall rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
-                  3213
-                </p>
-              </div>
-              <div className="flex justify-between">
-                <p>Last 10:</p>
-                <p className="px-2 py-1 bg-overall rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
-                  3213
-                </p>
-              </div>
-            </div>
-            <div className="w-full flex flex-col gap-2">
-              <div className="flex justify-between">
-                <p>Hard:</p>
-                <p className="px-2 py-1 bg-hard rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
-                  3213
-                </p>
-              </div>
-              <div className="flex justify-between">
-                <p>Last 10:</p>
-                <p className="px-2 py-1 bg-hard rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
-                  3213
-                </p>
-              </div>
-            </div>
-            <div className="w-full flex flex-col gap-2">
-              <div className="flex justify-between">
-                <p>Clay:</p>
-                <p className="px-2 py-1 bg-clay rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
-                  3213
-                </p>
-              </div>
-              <div className="flex justify-between">
-                <p>Last 10:</p>
-                <p className="px-2 py-1 bg-clay rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
-                  3213
-                </p>
-              </div>
-            </div>
-            <div className="w-full flex flex-col gap-2">
-              <div className="flex justify-between">
-                <p>Grass:</p>
-                <p className="px-2 py-1 bg-grass rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
-                  3213
-                </p>
-              </div>
-              <div className="flex justify-between">
-                <p>Last 10:</p>
-                <p className="px-2 py-1 bg-grass rounded-full font-semibold text-sm select-none text-[#FFFFFF] text-center ">
-                  3213
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <PlayerMatchHistoryTable />
-      </>
-      }
+          <PlayerMatchHistoryTable />
+        </>
+      )}
     </div>
   );
 }

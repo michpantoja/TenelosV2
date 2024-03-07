@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "chartjs": "^0.3.24",
+    "chartjs-adapter-moment": "^1.0.1",
+    "chartjs-plugin-zoom": "^2.0.1",
     "next": "14.0.4",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
