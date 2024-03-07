@@ -1,7 +1,7 @@
 "use client";
 
 import BarChart from "@/components/Charts/Bar";
-import Graph from "@/components/Charts/Graph";
+import H2HGraph from "@/components/Charts/H2HGraph";
 import H2HMatchHistoryTable from "@/components/Tables/H2HMatchHistory";
 import React, { useState } from "react";
 import Select from "react-select";
@@ -11,6 +11,10 @@ import MatchPredictionCard from "@/components/MatchPredictionCard";
 export default function H2H() {
   const [activeTab, setActiveTab] = useState("Bio");
   const tabs = ["Bio", "Charts", "Match History"];
+  const [filter, setFilter] = useState("ELO Ratings");
+  const [invert, setInvert] = useState(false);
+  const [type, setType] = useState("time");
+  const [surface, setSurface] = useState("Overall");
   const players = [
     {
       value: "1",
@@ -284,7 +288,12 @@ export default function H2H() {
           </div>
         </div>
         <hr className="hidden lg:flex w-full border-gray" />
-        <Graph />
+        <H2HGraph
+          invert={invert}
+          filter={filter}
+          type={type}
+          surface={surface}
+        />
         <hr className="hidden lg:flex w-full border-gray" />
         <H2HMatchHistoryTable />
       </div>
@@ -299,9 +308,7 @@ export default function H2H() {
               height={200}
               quality={100}
               alt={""}
-              className={`bg-contain rounded-full w-[80px] sm:w-[120px] lg:w-[200px] h-[80px] sm:h-[120px] lg:h-[200px] select-none border-4 
-          
-        `}
+              className={`bg-contain rounded-full w-[80px] sm:w-[120px] lg:w-[200px] h-[80px] sm:h-[120px] lg:h-[200px] select-none border-4`}
             />
             <Select
               className="w-[160px] md:w-[280px] font-semibold text-base select-none outline-none"
@@ -359,9 +366,7 @@ export default function H2H() {
               height={200}
               quality={100}
               alt={""}
-              className={`bg-contain rounded-full w-[80px] sm:w-[120px] lg:w-[200px] h-[80px] sm:h-[120px] lg:h-[200px] select-none border-4 
-          
-        `}
+              className={`bg-contain rounded-full w-[80px] sm:w-[120px] lg:w-[200px] h-[80px] sm:h-[120px] lg:h-[200px] select-none border-4`}
             />
             <Select
               className="w-[160px] md:w-[280px] font-semibold text-base select-none outline-none"
@@ -525,7 +530,7 @@ export default function H2H() {
           </div>
         )}
 
-        {activeTab === "Charts" && <Graph />}
+        {activeTab === "Charts" && <H2HGraph />}
         {activeTab === "Match History" && (
           <div>
             <H2HMatchHistoryTable />
